@@ -42,6 +42,29 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input NewTodo) (*Todo
 	return todo, nil
 }
 
+func (r *mutationResolver) UpdateTodo(ctx context.Context, input UpdateTodo) (*Todo, error) {
+	var todo *Todo
+	for _, v := range r.todos {
+		if v.ID == input.ID {
+			v.Done = input.Done
+			todo = v
+			break
+		}
+	}
+	return todo, nil
+}
+
+func (r *mutationResolver) DeleteTodo(ctx context.Context, input DeleteTodo) (string, error) {
+	todos := []*Todo{}
+	for _, v := range r.todos {
+		if v.ID != input.ID {
+			todos = append(todos, v)
+		}
+	}
+	r.todos = todos
+	return "OK", nil
+}
+
 type queryResolver struct{ *Resolver }
 
 func (r *queryResolver) Users(ctx context.Context) ([]*User, error) {

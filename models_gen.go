@@ -2,6 +2,10 @@
 
 package try_gqlgen
 
+type DeleteTodo struct {
+	ID string `json:"id"`
+}
+
 type NewTodo struct {
 	UserID string `json:"userID"`
 	Text   string `json:"text"`
@@ -10,4 +14,9 @@ type NewTodo struct {
 type NewUser struct {
 	Name string `json:"name"`
 	Age  int    `json:"age"`
+}
+
+type UpdateTodo struct {
+	ID   string `json:"id"`
+	Done bool   `json:"done"`
 }
