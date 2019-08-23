@@ -54,6 +54,17 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, input UpdateTodo) (*T
 	return todo, nil
 }
 
+func (r *mutationResolver) DeleteTodo(ctx context.Context, input DeleteTodo) (string, error) {
+	todos := []*Todo{}
+	for _, v := range r.todos {
+		if v.ID != input.ID {
+			todos = append(todos, v)
+		}
+	}
+	r.todos = todos
+	return "OK", nil
+}
+
 type queryResolver struct{ *Resolver }
 
 func (r *queryResolver) Users(ctx context.Context) ([]*User, error) {
