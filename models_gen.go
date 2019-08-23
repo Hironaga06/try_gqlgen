@@ -11,3 +11,8 @@ type NewUser struct {
 	Name string `json:"name"`
 	Age  int    `json:"age"`
 }
+
+type UpdateTodo struct {
+	ID   string `json:"id"`
+	Done bool   `json:"done"`
+}

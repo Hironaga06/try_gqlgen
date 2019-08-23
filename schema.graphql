@@ -10,6 +10,7 @@ type Query {
 type Mutation {
   createUser(input: NewUser!): User!
   createTodo(input: NewTodo!): Todo!
+  updateTodo(input: UpdateTodo!): Todo!
 }
 
 ## User
@@ -36,4 +37,9 @@ type Todo {
 input NewTodo {
   userID: ID!
   text: String!
+}
+
+input UpdateTodo {
+  id: ID!
+  done: Boolean!
 }
