@@ -11,6 +11,7 @@ type Mutation {
   createUser(input: NewUser!): User!
   createTodo(input: NewTodo!): Todo!
   updateTodo(input: UpdateTodo!): Todo!
+  deleteTodo(input: DeleteTodo!): String!
 }
 
 ## User
@@ -42,4 +43,8 @@ input NewTodo {
 input UpdateTodo {
   id: ID!
   done: Boolean!
+}
+
+input DeleteTodo {
+  id: ID!
 }
